@@ -36,13 +36,31 @@ const supabaseClient = supabase.createClient(
       
       async function createNewUser(event) {
         event.preventDefault()
-
+        
         const email = document.querySelector("#signup-email").value;
         const password = document.querySelector("#signup-password").value
-        const response = await supabaseClient.auth.signUp({
-          email: email,
-          password: password,
-        });
-        console.log("response:", response)
-
+        
+        const UsrName = document.querySelector('#signup-name').value
+        
+        const object = {
+            email: email,
+            
+            password : password,
+            
+            options : {
+                data :{
+                    name : UsrName
+                }
+            }
+        }
+        const response = await supabaseClient.auth.signUp(object)
+        
+        if (response.error) {
+            Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: response.error.message,
+  footer:''
+});
+        }
       }
