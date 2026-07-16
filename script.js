@@ -62,13 +62,31 @@ const supabaseClient = supabase.createClient(
   text: response.error.message,
   footer:''
 });
-        }else{
-            Swal.fire({
-  title: "SignUp Completed",
-  text: "Now Continue To Login!",
-  icon: "success"
-});
-        }
+        }else {
+    Swal.fire({
+        icon: "success",
+        title: "Account Created!",
+        text: "Your account has been created successfully. Please log in.",
+        confirmButtonText: "Login"
+    }).then(() => {
+        
+        // Hide signup form
+        signupBox.classList.add("hidden");
+        
+        // Show login form
+        loginBox.classList.remove("hidden");
+        
+        // Optional: clear the signup form
+        document.querySelector("#signup-name").value = "";
+        document.querySelector("#signup-email").value = "";
+        document.querySelector("#signup-password").value = "";
+        
+        // Optional: pre-fill the login email
+        document.querySelector("#login-email").value =
+            email;
+        
+    });
+}
       }
       
       
