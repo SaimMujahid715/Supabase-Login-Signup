@@ -62,5 +62,45 @@ const supabaseClient = supabase.createClient(
   text: response.error.message,
   footer:''
 });
+        }else{
+            Swal.fire({
+  title: "SignUp Completed",
+  text: "Now Continue To Login!",
+  icon: "success"
+});
         }
       }
+      
+      
+      
+      /*-----*****-----
+          Login/SignIn */
+          
+          
+    async function login(event){
+        event.preventDefault()
+        
+        
+        const email = document.querySelector('#login-email').value
+        
+        const password = document.querySelector('#login-password').value
+        
+        const obj = {
+            email : email,
+            password : password
+        }
+        
+        const response = await supabaseClient.auth.signInWithPassword(obj)
+        
+        
+        if(response.error){
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: response.error.message,
+            footer: " "
+            })
+        }else{
+            window.location.href = "./profile.html"
+        }
+    }
