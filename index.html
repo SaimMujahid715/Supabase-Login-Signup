@@ -38,7 +38,7 @@
         const response = await supabaseClient.auth.getUser()
         
         if(response.data.user){
-          window.location.href = "../TodoApp/todo.html"
+          window.location.href = "./TodoApp/todo.html"
         }else{
           window.location.href = "./login-signup.html"
         }
