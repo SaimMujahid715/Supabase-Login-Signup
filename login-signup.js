@@ -119,7 +119,7 @@ const supabaseClient = supabase.createClient(
             footer: " "
             })
         }else{
-            window.location.href = "./profile.html"
+            window.location.href = "./TodoApp/index.html"
         }
     }
     
