@@ -76,7 +76,7 @@ const supabaseClient = supabase.createClient(
         // Show login form
         loginBox.classList.remove("hidden");
         
-        // Optional: clear the signup form
+        // clear the signup form
         document.querySelector("#signup-name").value = "";
         document.querySelector("#signup-email").value = "";
         document.querySelector("#signup-password").value = "";
@@ -122,3 +122,5 @@ const supabaseClient = supabase.createClient(
             window.location.href = "./profile.html"
         }
     }
+    
+    // Forgot Password Code
